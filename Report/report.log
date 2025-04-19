@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.16)  25 MAR 2025 14:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.16)  19 APR 2025 15:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -757,46 +757,38 @@ File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}] [2] [3] [
 4]
-<Lab2Exercise.jpg, id=218, 1200.485pt x 659.46375pt>
-File: Lab2Exercise.jpg Graphic file (type jpg)
-<use Lab2Exercise.jpg>
-Package pdftex.def Info: Lab2Exercise.jpg  used on input line 266.
+<images/Lab2Exercise.jpg, id=222, 1200.485pt x 659.46375pt>
+File: images/Lab2Exercise.jpg Graphic file (type jpg)
+<use images/Lab2Exercise.jpg>
+Package pdftex.def Info: images/Lab2Exercise.jpg  used on input line 266.
 (pdftex.def)             Requested size: 234.8775pt x 129.02257pt.
- [5 <./Lab2Exercise.jpg>] [6] [7]
-<Homework3.jpg, id=374, 249.5724pt x 169.5936pt>
-File: Homework3.jpg Graphic file (type jpg)
-<use Homework3.jpg>
-Package pdftex.def Info: Homework3.jpg  used on input line 443.
+ [5 <./images/Lab2Exercise.jpg>] [6] [7]
+<images/Homework3.jpg, id=379, 249.5724pt x 169.5936pt>
+File: images/Homework3.jpg Graphic file (type jpg)
+<use images/Homework3.jpg>
+Package pdftex.def Info: images/Homework3.jpg  used on input line 443.
 (pdftex.def)             Requested size: 234.8775pt x 159.61208pt.
- [8 <./Homework3.jpg>] [9]
-<homework4.jpg, id=448, 1011.78pt x 620.3175pt>
-File: homework4.jpg Graphic file (type jpg)
-<use homework4.jpg>
-Package pdftex.def Info: homework4.jpg  used on input line 545.
+ [8 <./images/Homework3.jpg>] [9]
+<images/homework4.jpg, id=453, 1011.78pt x 620.3175pt>
+File: images/homework4.jpg Graphic file (type jpg)
+<use images/homework4.jpg>
+Package pdftex.def Info: images/homework4.jpg  used on input line 545.
 (pdftex.def)             Requested size: 234.8775pt x 143.99516pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[10] [11 <./homework4.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 653--655
-
- []
-
-[12] [13] [14] (./report.aux)
+ [10] [11 <./images/homework4.jpg>] [12] [13] [14{/usr/local/texlive/2024/texmf
+-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [15] [16] (./report.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 24657849C1B7D0F3294C07A4842B0C8A;1109.
+(rerunfilecheck)             Checksum: 2463E853E7A6FE90B49F201FBE53F4FA;1205.
  ) 
 Here is how much of TeX's memory you used:
- 24496 strings out of 474116
- 451506 string characters out of 5743682
+ 24520 strings out of 474116
+ 451943 string characters out of 5743682
  2108187 words of memory out of 5000000
- 46063 multiletter control sequences out of 15000+600000
- 573191 words of font info for 74 fonts, out of 8000000 for 9000
+ 46070 multiletter control sequences out of 15000+600000
+ 573526 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,12n,107p,543b,2465s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
@@ -805,18 +797,19 @@ Here is how much of TeX's memory you used:
 sr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/
 local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/l
 ocal/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/loc
-al/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx0900.pfb></usr/local
-/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/t
-exlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/tex
-live/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texli
-ve/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive
-/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2
-024/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/202
-4/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb>
-Output written on report.pdf (14 pages, 551636 bytes).
+al/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr
+/local/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx0900.pfb></usr/l
+ocal/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/loc
+al/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local
+/texlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/t
+exlive/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/tex
+live/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texli
+ve/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive
+/2024/texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb>
+Output written on report.pdf (16 pages, 568208 bytes).
 PDF statistics:
- 668 PDF objects out of 1000 (max. 8388607)
- 614 compressed objects within 7 object streams
- 404 named destinations out of 1000 (max. 500000)
- 116 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 704 PDF objects out of 1000 (max. 8388607)
+ 645 compressed objects within 7 object streams
+ 419 named destinations out of 1000 (max. 500000)
+ 124 words of extra memory for PDF output out of 10000 (max. 10000000)
 

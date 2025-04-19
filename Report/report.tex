@@ -263,7 +263,7 @@ The DFA accepts any string that contains at least one 'b' since reaching state 4
 
 2. \begin{figure}[h] % 'h' means place it here if possible
     \centering
-    \includegraphics[width=0.5\textwidth]{Lab2Exercise.jpg} % Adjust width as needed
+    \includegraphics[width=0.5\textwidth]{images/Lab2Exercise.jpg} % Adjust width as needed
     \caption{}
 \end{figure}
 
@@ -438,9 +438,9 @@ A^2:
 \end{lstlisting}
 
 \textbf{HW 2 (Product Automata:)}\\
-1. \begin{figure}[h] % 'h' means place it here if possible
+1. \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.5\textwidth]{Homework3.jpg} % Adjust width as needed
+    \includegraphics[width=0.5\textwidth]{images/Homework3.jpg} % Adjust width as needed
     \caption{}
 \end{figure}
 \begin{lstlisting}
@@ -540,9 +540,9 @@ delta(q3, 1) = {q3}
 Final states: {q0,q2} which does not include q3, so 101110 is rejected
 \end{lstlisting}
 \textbf{4 and 5. }\\
-\begin{figure}[h] % 'h' means place it here if possible
+\begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.5\textwidth]{homework4.jpg} % Adjust width as needed
+    \includegraphics[width=0.5\textwidth]{images/homework4.jpg} 
     \caption{}
 \end{figure}
 
@@ -650,9 +650,7 @@ d. The language of the DFA consists of all possible strings that lead to the acc
 
 This expression represents all valid sequences accepted by the DFA.
 
-\textbf{ITALC 4.4} \\
-\textbf{Section 4.4.1} \\
-\section{Synthesis}
+\noindent\textbf{ITALC 4.4 — Section 4.4.1}
 a. 
 \[
 \begin{array}{c|ccccc}
@@ -756,6 +754,130 @@ Thus, the reduced DFA has:
 \begin{lstlisting}
 Question: How does the minimization of a DFA impact its computational efficiency, and are there cases where minimizing a DFA could be detrimental rather than beneficial?
 \end{lstlisting}
+
+\subsection{Week 11}
+\textbf{Homework 6 and 7}\\
+\textbf {Computability, Turing machines, (un)decidability}\\
+\textbf{Exercise A}
+\begin{enumerate}
+\item Write a Turing Machine to accept the language of binary strings \( L = \{10^n : n \in \mathbb{N} \} \), and for input \( 10^n \), it returns the string \( 10^{n+1} \).
+\begin{itemize}
+  \item Start state: \( q_0 \)
+  \item Accepting state: none (the machine halts naturally after writing)
+  \item Alphabet: \( \Sigma = \{0,1\} \), Tape symbols include \( B \)
+\end{itemize}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Current State & Read & Write & Move & Next State \\
+\hline
+$q_0$ & 1 & 1 & R & $q_0$ \\
+$q_0$ & 0 & 0 & R & $q_0$ \\
+$q_0$ & B & 0 & N & halt \\
+\hline
+\end{tabular}
+\end{center}
+
+\item Write a Turing Machine to accept the language of binary strings \( L = \{10^n : n \in \mathbb{N} \} \), and for input \( 10^n \), it returns the string \( 1 \).
+\begin{itemize}
+  \item Start state: \( q_0 \)
+  \item Accepting state: none
+  \item Alphabet: \( \Sigma = \{0,1\} \), Tape symbols include \( B \)
+\end{itemize}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Current State & Read & Write & Move & Next State \\
+\hline
+$q_0$ & 1 & 1 & R & $q_1$ \\
+$q_1$ & 0 & B & R & $q_1$ \\
+$q_1$ & B & B & N & halt \\
+\hline
+\end{tabular}
+\end{center}
+
+\item Write a Turing Machine to accept the total language of binary strings and, for every string, return the string with 0's and 1's swapped.
+\begin{itemize}
+  \item Start state: \( q_0 \)
+  \item Accepting state: none
+  \item Alphabet: \( \Sigma = \{0,1\} \), Tape symbols include \( B \)
+\end{itemize}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Current State & Read & Write & Move & Next State \\
+\hline
+$q_0$ & 0 & 1 & R & $q_0$ \\
+$q_0$ & 1 & 0 & R & $q_0$ \\
+$q_0$ & B & B & N & halt \\
+\hline
+\end{tabular}
+\end{center}
+\end{enumerate}
+
+\textbf{Problems on Decidability}\\
+\textbf{Exercise 1}\\
+Which of the following languages are decidable, recursively enumerable (r.e.), or have recursively enumerable complement (co-r.e.)?
+
+\begin{enumerate}
+    \item \( L_1 := \{ M \mid \text{$M$ halts on itself} \} \)
+    
+    \textbf{Answer:} This is the self-halting problem. It is not decidable because it reduces to the Halting Problem, which is undecidable. However, it is recursively enumerable (r.e.) since we can simulate \( M \) on input \( M \), and accept if it halts.
+    
+    \textbf{Conclusion:} Not decidable, r.e., not co-r.e.
+
+    \item \( L_2 := \{ (M, w) \mid \text{$M$ halts on the word $w$} \} \)
+    
+    \textbf{Answer:} This is the classic Halting Problem. It is not decidable, but it is r.e. because we can simulate \( M \) on \( w \) and accept if it halts.
+    
+    \textbf{Conclusion:} Not decidable, r.e., not co-r.e.
+
+    \item \( L_3 := \{ (M, w, k) \mid \text{$M$ halts on $w$ in at most $k$ steps} \} \)
+
+    \textbf{Answer:} This language is decidable. We can simulate \( M \) on \( w \) for at most \( k \) steps and check if it halts within that time.
+    
+    \textbf{Conclusion:} Decidable, hence also r.e. and co-r.e.
+\end{enumerate}
+
+\textbf{Exercise 2}\\
+Which of the following statements is true? If yes, give an argument; if no, give a counterexample.
+
+\begin{enumerate}
+    \item If \( L_1 \) and \( L_2 \) are decidable, then so is \( L_1 \cup L_2 \).
+    
+    \textbf{Answer:} True. We can construct a decider that runs both deciders for \( L_1 \) and \( L_2 \). If either accepts, accept.
+
+    \item If \( L \) is decidable, then so is the complement \( \overline{L} := \Sigma^* \setminus L = \{ w \in \Sigma^* \mid w \notin L \} \).
+    
+    \textbf{Answer:} True. Since a decider always halts, we can simply invert the result (accept becomes reject and vice versa).
+
+    \item If \( L \) is decidable, then so is \( L^* \).
+    
+    \textbf{Answer:} True. Given a decider for \( L \), we can construct a decider for \( L^* \) by checking all possible segmentations of the input string into words from \( L \), which is guaranteed to halt since \( L \) is decidable.
+
+    \item If \( L_1 \) and \( L_2 \) are r.e., then \( L_1 \cup L_2 \) is r.e.
+    
+    \textbf{Answer:} True. Run both Turing machines for \( L_1 \) and \( L_2 \) in parallel (dovetailing). If either accepts, accept.
+
+    \item If \( L \) is r.e., then so is \( \overline{L} \).
+    
+    \textbf{Answer:} False. If both a language and its complement are r.e., then the language is decidable. There exist r.e. languages whose complement is not r.e. (e.g., the Halting Problem).
+
+    \item If \( L \) is r.e., then so is \( L^* \).
+    
+    \textbf{Answer:} True. Given an r.e. machine for \( L \), we can build a machine for \( L^* \) using non-determinism to guess how to split the input and simulate each piece. Since TMs are allowed to be non-deterministic when recognizing r.e. languages, this works.
+\end{enumerate}
+
+\textbf{ITALC Sections: 8.1, 8.2, 9.1, 9.2 Questions}
+\begin{itemize}
+  \item Why are Turing machines used instead of actual programming languages when discussing undecidability?
+  \item What makes the diagonalization language \( L_d \) so important in proving that some languages are not even recursively enumerable?
+\end{itemize}
+
+\section{Synthesis}
 
 \section{Evidence of Participation}
 
