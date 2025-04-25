@@ -7,6 +7,7 @@
 \contentsline {subsection}{\numberline {2.5}Week 5}{9}{subsection.2.5}%
 \contentsline {subsection}{\numberline {2.6}Week 6}{11}{subsection.2.6}%
 \contentsline {subsection}{\numberline {2.7}Week 11}{14}{subsection.2.7}%
-\contentsline {section}{\numberline {3}Synthesis}{16}{section.3}%
-\contentsline {section}{\numberline {4}Evidence of Participation}{16}{section.4}%
-\contentsline {section}{\numberline {5}Conclusion}{16}{section.5}%
+\contentsline {subsection}{\numberline {2.8}Week 12}{16}{subsection.2.8}%
+\contentsline {section}{\numberline {3}Synthesis}{18}{section.3}%
+\contentsline {section}{\numberline {4}Evidence of Participation}{18}{section.4}%
+\contentsline {section}{\numberline {5}Conclusion}{18}{section.5}%

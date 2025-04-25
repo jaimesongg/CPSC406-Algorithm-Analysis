@@ -877,10 +877,141 @@ Which of the following statements is true? If yes, give an argument; if no, give
   \item What makes the diagonalization language \( L_d \) so important in proving that some languages are not even recursively enumerable?
 \end{itemize}
 
+\subsection{Week 12}
+\textbf{Homework 8 and 9}\\
+\textbf {Landau Notation ("Big O"), or Mathematics as a Metaphor}\\
+\textbf{Exercise 1} \\
+Let log denote the natural logarithm, i.e., the logarithm w.r.t. the base e. Order the following functions by their order of growth (from slow to fast):
+\begin{enumerate}
+  \item (f) \(\log(\log n)\)
+  \item (c) \(\log n\)
+  \item (b) \(n\)
+  \item (e) \(n^2\)
+  \item (g) \(2^n\)
+  \item (d) \(e^n\)
+  \item (h) \(n!\)
+  \item (a) \(2^{2^n}\)
+\end{enumerate}
+
+\textbf{Exercise 2}
+
+For functions \( f, g, h \colon \mathbb{N} \to \mathbb{R}_{\geq 0} \), prove the following:
+
+\begin{enumerate}
+    \item \( f \in O(f) \)
+
+    \textbf{Proof:} By definition, \( f(n) \leq c \cdot f(n) \) for any \( c \geq 1 \) and all \( n \geq 1 \). Choosing \( c = 1 \), the inequality holds trivially. Hence, \( f \in O(f) \).
+
+    \item \( O(c \cdot f) = O(f) \) for \( c > 0 \)
+
+    \textbf{Proof:} Multiplying a function by a constant does not change its growth rate. If \( f(n) \leq c_1 \cdot g(n) \), then \( c \cdot f(n) \leq (c \cdot c_1) \cdot g(n) \). Thus, \( O(c \cdot f) = O(f) \).
+
+    \item If \( f(n) \leq g(n) \) for all large enough \( n \), then \( O(f) \subseteq O(g) \)
+
+    \textbf{Proof:} Suppose \( h(n) \in O(f(n)) \), then \( h(n) \leq c \cdot f(n) \leq c \cdot g(n) \) for large \( n \). Hence, \( h(n) \in O(g(n)) \), and \( O(f) \subseteq O(g) \).
+
+    \item If \( O(f) \subseteq O(g) \), then \( O(f + h) \subseteq O(g + h) \)
+
+    \textbf{Proof:} Let \( t(n) \in O(f + h) \). Then there exists \( c_1 \) such that \( t(n) \leq c_1(f(n) + h(n)) \) for all large \( n \). Since \( f(n) \in O(g(n)) \), there exists \( c_2 \) such that \( f(n) \leq c_2 g(n) \). Thus, \( t(n) \leq c_1(c_2 g(n) + h(n)) = c_1 c_2 g(n) + c_1 h(n) \), which implies \( t(n) \in O(g + h) \).
+
+    \item If \( h(n) > 0 \) for all \( n \in \mathbb{N} \), and \( O(f) \subseteq O(g) \), then \( O(f \cdot h) \subseteq O(g \cdot h) \)
+
+    \textbf{Proof:} Let \( t(n) \in O(f \cdot h) \), so \( t(n) \leq c \cdot f(n) \cdot h(n) \). Since \( f(n) \leq c' \cdot g(n) \), we get \( t(n) \leq c \cdot c' \cdot g(n) \cdot h(n) \), and thus \( t(n) \in O(g \cdot h) \).
+\end{enumerate}
+
+\textbf{Exercise 3}
+
+Let \( i, j, k, n \in \mathbb{N} \). Prove the following:
+
+\begin{enumerate}
+    \item If \( j \leq k \), then \( O(n^j) \subseteq O(n^k) \)
+
+    \textbf{Proof:} For large \( n \), since \( j \leq k \), we have \( n^j \leq n^k \). So any function \( f(n) \in O(n^j) \) satisfies \( f(n) \leq c \cdot n^j \leq c \cdot n^k \), which implies \( f(n) \in O(n^k) \).
+
+    \item If \( j \leq k \), then \( O(n^j + n^k) \subseteq O(n^k) \)
+
+    \textbf{Proof:} For large \( n \), \( n^j + n^k \leq 2n^k \). Thus, any function \( f(n) \in O(n^j + n^k) \) satisfies \( f(n) \leq c(n^j + n^k) \leq c \cdot 2n^k \), which implies \( f(n) \in O(n^k) \).
+
+    \item \( O\left( \sum_{i=0}^{k} a_i n^i \right) = O(n^k) \)
+
+    \textbf{Proof:} The term \( a_k n^k \) dominates the polynomial as \( n \) grows. The sum \( \sum_{i=0}^{k} a_i n^i \leq c \cdot n^k \) for some constant \( c \), so the function is \( O(n^k) \).
+
+    \item \( O(\log n) \subseteq O(n) \)
+
+    \textbf{Proof:} For large \( n \), \( \log n \leq n \). So any function \( f(n) \in O(\log n) \) satisfies \( f(n) \leq c \cdot \log n \leq c \cdot n \), meaning \( f(n) \in O(n) \).
+
+    \item \( \mathcal{O}(n \log n) \subseteq \mathcal{O}(n^2) \)
+
+    \textbf{Proof:} For large \( n \), the logarithmic factor grows slower than any positive polynomial. Since \( \log n \leq n \) for all \( n \geq 2 \), we have \( n \log n \leq n \cdot n = n^2 \). Therefore, any function \( f(n) \in \mathcal{O}(n \log n) \) satisfies \( f(n) \leq c \cdot n \log n \leq c \cdot n^2 \), meaning \( f(n) \in \mathcal{O}(n^2) \).
+
+\end{enumerate}
+
+\textbf {2 point Participation Points}\\
+\textbf{Exercise 4}
+
+Which relationships do we have between the following? Prove your claim.
+
+\begin{enumerate}
+    \item \( \mathcal{O}(n) \) and \( \mathcal{O}(n) \)
+
+    \textbf{Claim:} \( \mathcal{O}(n) = \mathcal{O}(n) \)
+
+    \textbf{Proof:} They are clearly equal, since they describe the same growth rate.
+
+    \item \( \mathcal{O}(n^2) \) and \( \mathcal{O}(2^n) \)
+
+    \textbf{Claim:} \( \mathcal{O}(n^2) \subsetneq \mathcal{O}(2^n) \)
+
+    \textbf{Proof:} Exponential functions grow faster than any polynomial. For large \( n \), \( 2^n \gg n^2 \), so any function in \( \mathcal{O}(n^2) \) is also in \( \mathcal{O}(2^n) \), but not vice versa.
+
+    \item \( \mathcal{O}(\log n) \) and \( \mathcal{O}(\log n \cdot \log n) \)
+
+    \textbf{Claim:} \( \mathcal{O}(\log n) \subsetneq \mathcal{O}((\log n)^2) \)
+
+    \textbf{Proof:} \( \log n \leq (\log n)^2 \) for \( n \geq 2 \), so any function in \( \mathcal{O}(\log n) \) is in \( \mathcal{O}((\log n)^2) \), but the reverse is not true.
+
+    \item \( \mathcal{O}(2^n) \) and \( \mathcal{O}(3^n) \)
+
+    \textbf{Claim:} \( \mathcal{O}(2^n) \subsetneq \mathcal{O}(3^n) \)
+
+    \textbf{Proof:} For large \( n \), \( 3^n > 2^n \). In fact, \( 2^n = (3^n)^{\log_3 2} \), so \( 2^n \in \mathcal{O}(3^n) \), but \( 3^n \notin \mathcal{O}(2^n) \).
+
+    \item \( \mathcal{O}(\log_2 n) \) and \( \mathcal{O}(\log_3 n) \)
+
+    \textbf{Claim:} \( \mathcal{O}(\log_2 n) = \mathcal{O}(\log_3 n) \)
+
+    \textbf{Proof:} \( \log_2 n \) and \( \log_3 n \) differ only by a constant factor: \( \log_2 n = \frac{\log_3 n}{\log_3 2} \). Since Big-O ignores constant factors, the two are asymptotically equivalent.
+\end{enumerate}
+
+\textbf{Exercise 5}
+
+Classic examples of the above come from sorting. Discuss the comparisons of the runtimes of the following algorithms:
+
+\begin{enumerate}
+    \item \textbf{Bubble sort vs Insertion sort}
+
+    \textbf{Comparison:} Both have worst-case runtime \( \mathcal{O}(n^2) \), but insertion sort typically performs better in practice for nearly sorted inputs. Bubble sort is generally slower due to repeated unnecessary comparisons and swaps.
+
+    \item \textbf{Insertion sort vs Merge sort}
+
+    \textbf{Comparison:} Insertion sort has a worst-case runtime of \( \mathcal{O}(n^2) \), while merge sort consistently runs in \( \mathcal{O}(n \log n) \). Therefore, merge sort is asymptotically faster and more efficient on large datasets.
+
+    \item \textbf{Merge sort vs Quick sort}
+
+    \textbf{Comparison:} Both have average-case runtimes of \( \mathcal{O}(n \log n) \). Merge sort guarantees this in the worst case, while quick sort can degrade to \( \mathcal{O}(n^2) \) if poor pivot choices are made. However, quick sort is usually faster in practice due to better cache performance and lower constant factors.
+\end{enumerate}
+
+\textbf{ITALC Sections 10.1-10.3 Question}
+Since the theory of intractibility is based on the unproven assumption that P does not equal NP, what would be the practical implications for fields like cryptography, optimization, or artifical intelligence if it were eventually proven that P = NP?
+
 \section{Synthesis}
 
 \section{Evidence of Participation}
+\textbf{Fowler School of Engineering Seminar Series} \\
+\textbf{Dr.Alireza Mehrnia: Artificial Intelligence: A Martin Odyssey} \\
+On Monday I had the chance to attend Dr. Alireza Mehrnia’s seminar on Artificial Intelligence: A Martian Odyssey, where he explored the potential evolution of artificial life beyond Earth. Rather than focusing on the usual technical aspects of AI, Dr. Mehrnia invited us to approach the topic from a philosophical and speculative lens, what happens when machines not only think, but redefine existence itself? Set against the backdrop of Mars, the seminar used narrative elements from his book to imagine a future where AI and synthetic life aren’t just tools, but beings that inherit and reinterpret human legacy. He challenged the idea that intelligence has to be biological, instead presenting Robo Sapiens as the next step, not of human development, but of intelligent life overall. What stood out to me was his discussion on how isolation from Earth’s cultural and ethical norms could shape entirely new forms of consciousness. With machines evolving in unfamiliar environments, might they develop beliefs, values, or even emotions that are unrecognizable to us? It was both exciting and unsettling to consider that our creations might grow beyond our understanding.
 
+Question: If synthetic beings develop their own sense of morality, how do we determine whether it's "right" by human standards or if we even should?
 \section{Conclusion}\label{conclusion}
 
 \begin{thebibliography}{99}
