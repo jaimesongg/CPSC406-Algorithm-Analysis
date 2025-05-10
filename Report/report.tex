@@ -1004,6 +1004,181 @@ Classic examples of the above come from sorting. Discuss the comparisons of the 
 \textbf{ITALC Sections 10.1-10.3 Question}
 Since the theory of intractibility is based on the unproven assumption that P does not equal NP, what would be the practical implications for fields like cryptography, optimization, or artifical intelligence if it were eventually proven that P = NP?
 
+\subsection{Week 13}
+\textbf{Homework 10 and 11}\\
+\textbf{Problems on SAT}\\
+\textbf{Exercise 1} \\
+Rewrite the following formulas in CNF:
+\begin{enumerate}
+    \item $\varphi_1 := \neg((a \land b) \lor (\neg c \land d))$
+    \textbf{Step 1: Apply De Morgan's Law:}
+    \[
+    \varphi_1 = \neg(a \land b) \land \neg(\neg c \land d)
+    \]
+
+    \textbf{Step 2: Apply De Morgan's Law again:}
+    \[
+    \varphi_1 = (\neg a \lor \neg b) \land (c \lor \neg d)
+    \]
+
+    \textbf{CNF:}
+    \[
+    (\neg a \lor \neg b) \land (c \lor \neg d)
+    \]
+    \item $\varphi_2 := \neg((p \lor q) \rightarrow (r \land \neg s))$
+
+    \textbf{Step 1: Replace implication:}
+    \[
+    \varphi_2 = \neg(\neg(p \lor q) \lor (r \land \neg s))
+    \]
+
+    \textbf{Step 2: Apply De Morgan's Law:}
+    \[
+    \varphi_2 = \neg\neg(p \lor q) \land \neg(r \land \neg s)
+    \]
+
+    \textbf{Step 3: Simplify double negation and apply De Morgan's Law:}
+    \[
+    \varphi_2 = (p \lor q) \land (\neg r \lor s)
+    \]
+
+    \textbf{CNF:}
+    \[
+    (p \lor q) \land (\neg r \lor s)
+    \]
+\end{enumerate}
+
+\textbf{Exercise 2} \\
+Are the following formulas satisfiable? For each one, if yes, give an assignment that makes it true; if not, explain why there do not exist any.
+
+\begin{enumerate}
+    \item $\psi_1 := (a \lor \neg b) \land (\neg a \lor b) \land (\neg a \lor \neg b)$
+
+    \begin{flushleft}
+    Try assignment: $a = \text{false},\ b = \text{false}$
+
+    \begin{align*}
+    (a \lor \neg b) &= F \lor T = T \\
+    (\neg a \lor b) &= T \lor F = T \\
+    (\neg a \lor \neg b) &= T \lor T = T
+    \end{align*}
+
+    All clauses evaluate to true.\\
+    \textbf{Conclusion:} $\psi_1$ is satisfiable.
+    \end{flushleft}
+
+    \item $\psi_2 := (\neg p \lor q) \land (\neg q \lor r) \land \neg(\neg p \lor r)$
+
+    \begin{flushleft}
+    First simplify the negation:
+    \[
+    \neg(\neg p \lor r) \equiv p \land \neg r
+    \]
+
+    So the formula becomes:
+    \[
+    (\neg p \lor q) \land (\neg q \lor r) \land p \land \neg r
+    \]
+
+    From $p$ and $\neg r$, we know:
+    \begin{align*}
+    \neg p &= F \Rightarrow (\neg p \lor q) = F \lor q = q \Rightarrow q = T \\
+    \neg q &= F \Rightarrow (\neg q \lor r) = F \lor F = F \quad \text{(contradiction)}
+    \end{align*}
+
+    One clause is false.\\
+    \textbf{Conclusion:} $\psi_2$ is not satisfiable.
+    \end{flushleft}
+
+    \item $\psi_3 := (x \lor y) \land (\neg x \lor y) \land (x \lor \neg y) \land (\neg x \lor \neg y)$
+
+    \begin{flushleft}
+    Try all possible truth assignments:
+
+    \textbf{Case 1:} $x = \text{true},\ y = \text{true}$
+
+    \begin{align*}
+    (x \lor y) &= T \\
+    (\neg x \lor y) &= F \lor T = T \\
+    (x \lor \neg y) &= T \lor F = T \\
+    (\neg x \lor \neg y) &= F \lor F = F \quad \text{Not satisfied}
+    \end{align*}
+
+    \textbf{Case 2:} $x = \text{true},\ y = \text{false}$
+
+    \begin{align*}
+    (x \lor y) &= T \\
+    (\neg x \lor y) &= F \lor F = F \quad \text{Not satisfied}
+    \end{align*}
+
+    \textbf{Case 3:} $x = \text{false},\ y = \text{true}$
+
+    \begin{align*}
+    (x \lor y) &= F \lor T = T \\
+    (\neg x \lor y) &= T \lor T = T \\
+    (x \lor \neg y) &= F \lor F = F \quad \text{Not satisfied}
+    \end{align*}
+
+    \textbf{Case 4:} $x = \text{false},\ y = \text{false}$
+
+    \begin{align*}
+    (x \lor y) &= F \quad \text{Not satisfied}
+    \end{align*}
+
+    All cases fail.\\
+    \textbf{Conclusion:} $\psi_3$ is not satisfiable.
+    \end{flushleft}
+\end{enumerate}
+
+\textbf{Exercise 3 (Encoding Sudoku)} \\
+
+We encode Sudoku constraints using boolean variables \( x_{r,c,v} \), where \( r, c, v \in \{1, \ldots, 9\} \). The variable \( x_{r,c,v} \) is true if and only if the entry at row \( r \), column \( c \) contains the number \( v \).
+
+The complete CNF formula is:
+\[
+\varphi := C_1 \land C_2 \land C_3 \land C_4 \land C_5 \land C_6
+\]
+
+\begin{flushleft}
+\textbf{Condition \( C_1 \): Each entry has at least one value}
+\[
+C_1 := \bigwedge_{r=1}^9 \bigwedge_{c=1}^9 \left( \bigvee_{v=1}^9 x_{r,c,v} \right)
+\]
+
+\textbf{Condition \( C_2 \): Each entry has at most one value}
+\[
+C_2 := \bigwedge_{r=1}^9 \bigwedge_{c=1}^9 \bigwedge_{\substack{v_1=1 \\ v_2 = v_1+1}}^9 \left( \neg x_{r,c,v_1} \lor \neg x_{r,c,v_2} \right)
+\]
+
+\textbf{Condition \( C_3 \): Each row contains every number exactly once}
+\[
+C_3 := \bigwedge_{r=1}^9 \bigwedge_{v=1}^9 \left( \bigvee_{c=1}^9 x_{r,c,v} \right) \quad \land \quad 
+\bigwedge_{r=1}^9 \bigwedge_{v=1}^9 \bigwedge_{\substack{c_1=1 \\ c_2 = c_1+1}}^9 \left( \neg x_{r,c_1,v} \lor \neg x_{r,c_2,v} \right)
+\]
+
+\textbf{Condition \( C_4 \): Each column contains every number exactly once}
+\[
+C_4 := \bigwedge_{c=1}^9 \bigwedge_{v=1}^9 \left( \bigvee_{r=1}^9 x_{r,c,v} \right) \quad \land \quad 
+\bigwedge_{c=1}^9 \bigwedge_{v=1}^9 \bigwedge_{\substack{r_1=1 \\ r_2 = r_1+1}}^9 \left( \neg x_{r_1,c,v} \lor \neg x_{r_2,c,v} \right)
+\]
+
+\textbf{Condition \( C_5 \): Each \( 3 \times 3 \) block contains every number exactly once}
+
+For each block indexed by top-left corner \( (i,j) \in \{1,4,7\} \times \{1,4,7\} \):
+\[
+C_5 := \bigwedge_{v=1}^9 \bigwedge_{i=1,4,7} \bigwedge_{j=1,4,7} \left( \bigvee_{\substack{r=i \\ r \leq i+2}} \bigvee_{\substack{c=j \\ c \leq j+2}} x_{r,c,v} \right)
+\quad \land \quad
+\bigwedge_{v=1}^9 \bigwedge_{i=1,4,7} \bigwedge_{j=1,4,7} \bigwedge_{\substack{(r_1,c_1),(r_2,c_2) \in \text{block} \\ (r_1,c_1) < (r_2,c_2)}} \left( \neg x_{r_1,c_1,v} \lor \neg x_{r_2,c_2,v} \right)
+\]
+
+\textbf{Condition \( C_6 \): The solution respects the given clues}
+
+Let the set of clues be \( G = \{(r,c,v)\} \). Then:
+\[
+C_6 := \bigwedge_{(r,c,v) \in G} x_{r,c,v}
+\]
+\end{flushleft}
+
 \section{Synthesis}
 
 \section{Evidence of Participation}

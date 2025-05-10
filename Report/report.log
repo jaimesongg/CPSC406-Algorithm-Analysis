@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.16)  24 APR 2025 20:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.2.16)  10 MAY 2025 11:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -757,38 +757,42 @@ File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 {/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
 al/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}] [2] [3] [
 4]
-<images/Lab2Exercise.jpg, id=227, 1200.485pt x 659.46375pt>
+<images/Lab2Exercise.jpg, id=232, 1200.485pt x 659.46375pt>
 File: images/Lab2Exercise.jpg Graphic file (type jpg)
 <use images/Lab2Exercise.jpg>
 Package pdftex.def Info: images/Lab2Exercise.jpg  used on input line 266.
 (pdftex.def)             Requested size: 234.8775pt x 129.02257pt.
  [5 <./images/Lab2Exercise.jpg>] [6] [7]
-<images/Homework3.jpg, id=384, 249.5724pt x 169.5936pt>
+<images/Homework3.jpg, id=389, 249.5724pt x 169.5936pt>
 File: images/Homework3.jpg Graphic file (type jpg)
 <use images/Homework3.jpg>
 Package pdftex.def Info: images/Homework3.jpg  used on input line 443.
 (pdftex.def)             Requested size: 234.8775pt x 159.61208pt.
  [8 <./images/Homework3.jpg>] [9]
-<images/homework4.jpg, id=458, 1011.78pt x 620.3175pt>
+<images/homework4.jpg, id=463, 1011.78pt x 620.3175pt>
 File: images/homework4.jpg Graphic file (type jpg)
 <use images/homework4.jpg>
 Package pdftex.def Info: images/homework4.jpg  used on input line 545.
 (pdftex.def)             Requested size: 234.8775pt x 143.99516pt.
  [10] [11 <./images/homework4.jpg>] [12] [13] [14{/usr/local/texlive/2024/texmf
--dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [15] [16] [17] [18] (./report
-.aux)
+-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [15] [16] [17] [18] [19]
+Underfull \hbox (badness 10000) in paragraph at lines 1133--1134
+
+ []
+
+[20] [21] (./report.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: DD0FC7FE30B78457A843F431CAB0BD1D;1301.
+(rerunfilecheck)             Checksum: 8D558C0DC3B93432C8F0629E91F8C8D0;1397.
  ) 
 Here is how much of TeX's memory you used:
- 24550 strings out of 474116
- 452169 string characters out of 5743682
+ 24564 strings out of 474116
+ 452373 string characters out of 5743682
  2108187 words of memory out of 5000000
- 46071 multiletter control sequences out of 15000+600000
+ 46076 multiletter control sequences out of 15000+600000
  573526 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,12n,107p,1208b,2465s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -806,14 +810,15 @@ live/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local
 exlive/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/local/tex
 live/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/local/texli
 ve/2024/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></usr/local/texlive
-/2024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/2
-024/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/202
-4/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2024/
-texmf-dist/fonts/type1/public/cm-super/sftt0900.pfb>
-Output written on report.pdf (18 pages, 610005 bytes).
+/2024/texmf-dist/fonts/type1/public/cm-super/sfrm0700.pfb></usr/local/texlive/2
+024/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/local/texlive/202
+4/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/local/texlive/2024/
+texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/local/texlive/2024/te
+xmf-dist/fonts/type1/public/cm-super/sftt0900.pfb>
+Output written on report.pdf (21 pages, 637713 bytes).
 PDF statistics:
- 765 PDF objects out of 1000 (max. 8388607)
- 698 compressed objects within 7 object streams
- 448 named destinations out of 1000 (max. 500000)
- 132 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 796 PDF objects out of 1000 (max. 8388607)
+ 723 compressed objects within 8 object streams
+ 457 named destinations out of 1000 (max. 500000)
+ 140 words of extra memory for PDF output out of 10000 (max. 10000000)
 
