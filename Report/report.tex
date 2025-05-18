@@ -1182,6 +1182,151 @@ C_6 := \bigwedge_{(r,c,v) \in G} x_{r,c,v}
 \textbf{ITALC Sections 10.1-10.2 Question}\\
 If Kruskal’s algorithm is in P and SAT is NP-complete, what does this say about the difference between easy and hard problems?
 
+\subsection{Week 14}
+\textbf{Homework 12 and 13}\\
+\textbf{Exercise 1: Maximal Flow and Minimal Cut} \\
+\textbf{1: Compute a maximal flow using the Ford-Fulkerson algorithm.}\\
+We start with all flows initialized to 0, and look for augmenting paths with available capacity from $s$ to $t$. We augment flow along those paths until no more such paths exist.
+
+\begin{itemize}
+    \item \textbf{Path 1:} $s \rightarrow a \rightarrow d \rightarrow t$ \\
+    Bottleneck capacity: $\min(10 - 8, 8, 2) = 2$ \\
+    Update flows: 
+    \begin{align*}
+        f(s,a) & = 10 \\
+        f(a,d) & = 8 \\
+        f(d,t) & = 8
+    \end{align*}
+
+    \item \textbf{Path 2:} $s \rightarrow a \rightarrow c \rightarrow d \rightarrow t$ \\
+    Bottleneck capacity: $\min(0/4, 0/6, 2) = 0$ \\
+    Not usable due to no remaining capacity from $a$ to $c$.
+
+    \item \textbf{No more augmenting paths available.}
+\end{itemize}
+
+\textbf{Total maximum flow:} sum of flows from source $s$:
+\[
+f(s,a) + f(s,b) = 10 + 0 = \boxed{10}
+\]
+
+\vspace{0.5em}
+
+\textbf{2: Determine a minimal cut.}
+
+After no more augmenting paths are found, we determine the set of reachable nodes from $s$ in the residual graph. Let $S$ be the set of reachable vertices and $T$ be the rest.
+
+\[
+S = \{s\}, \quad T = \{a, b, c, d, t\}
+\]
+
+The minimal cut is the set of edges from $S$ to $T$. In this case:
+\[
+\text{Minimal cut} = \{(s, a), (s, b)\}
+\]
+
+The capacity of the cut is:
+\[
+c(s,a) + c(s,b) = 10 + 10 = \boxed{10}
+\]
+
+\vspace{0.5em}
+
+\textbf{3: Is the maximal flow unique?}
+
+\textbf{No}, the maximal flow is not necessarily unique. There may be multiple sets of flows along different paths that achieve the same total flow value. The Ford-Fulkerson algorithm can produce different valid flows depending on the order in which augmenting paths are selected.
+
+\textbf{Exercise 2: An Unknown Algorithm}\\
+Consider the following algorithm:
+
+\begin{verbatim}
+fun unknown(n)
+1.    r := 0
+2.    for k := 1 to n-1 do
+3.        for l := k+1 to n do
+4.            for m := 1 to l do
+5.                r := r+1
+6.    return(r)
+\end{verbatim}
+
+\textbf{1: What value does the algorithm return?}
+
+We want to determine how many times the innermost statement \texttt{r := r+1} is executed, as a function of $n$.
+
+We analyze the triple loop:
+
+\begin{itemize}
+    \item Outer loop: $k$ ranges from $1$ to $n-1$
+    \item Middle loop: $l$ ranges from $k+1$ to $n$
+    \item Inner loop: $m$ ranges from $1$ to $l$
+\end{itemize}
+
+So the total number of times line 5 runs is:
+
+\[
+\sum_{k=1}^{n-1} \sum_{l=k+1}^{n} \sum_{m=1}^{l} 1 = \sum_{k=1}^{n-1} \sum_{l=k+1}^{n} l
+\]
+
+We simplify the inner summation:
+
+\[
+\sum_{l=k+1}^{n} l = \sum_{l=1}^{n} l - \sum_{l=1}^{k} l = \frac{n(n+1)}{2} - \frac{k(k+1)}{2}
+\]
+
+So the total is:
+
+\[
+\sum_{k=1}^{n-1} \left( \frac{n(n+1)}{2} - \frac{k(k+1)}{2} \right)
+= \frac{n(n+1)}{2}(n-1) - \frac{1}{2} \sum_{k=1}^{n-1} k(k+1)
+\]
+
+Use the identity:
+\[
+\sum_{k=1}^{n-1} k(k+1) = \sum_{k=1}^{n-1} (k^2 + k) = \sum_{k=1}^{n-1} k^2 + \sum_{k=1}^{n-1} k
+\]
+
+Use the formulas:
+\[
+\sum_{k=1}^{n-1} k = \frac{(n-1)n}{2}, \quad \sum_{k=1}^{n-1} k^2 = \frac{(n-1)n(2n-1)}{6}
+\]
+
+Putting it all together:
+\[
+\sum_{k=1}^{n-1} k(k+1) = \frac{(n-1)n(2n-1)}{6} + \frac{(n-1)n}{2}
+= \frac{(n-1)n}{6}(2n-1 + 3) = \frac{(n-1)n(2n+2)}{6}
+= \frac{(n-1)n(n+1)}{3}
+\]
+
+So final value of $r$ is:
+\[
+\frac{n(n+1)}{2}(n-1) - \frac{1}{2} \cdot \frac{(n-1)n(n+1)}{3}
+= \frac{(n-1)n(n+1)}{2} \left(1 - \frac{1}{3} \right)
+= \frac{(n-1)n(n+1)}{3}
+\]
+
+\[
+\boxed{r = \frac{(n-1)n(n+1)}{3}}
+\]
+
+\vspace{1em}
+
+\textbf{2: Estimate the worst-case running time (Big O notation)}
+
+The dominant cost is the number of iterations of the innermost loop. From part A, we saw that this is a cubic expression in $n$:
+
+\[
+r = \frac{(n-1)n(n+1)}{3} \in \Theta(n^3)
+\]
+
+Therefore, the worst-case running time of the algorithm is:
+
+\[
+\boxed{\mathcal{O}(n^3)}
+\]
+
+\textbf{GTAECS 14.1-14.4 Question}\\
+How does the max-flow min-cut theorem ensure that the graph-theoretic approach always finds the true maximum flow, and why is this often more efficient than solving via linear programming?
+
 \section{Synthesis}
 
 \section{Evidence of Participation}
