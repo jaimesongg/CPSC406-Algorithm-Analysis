@@ -1,15 +1,15 @@
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}%
-\contentsline {section}{\numberline {2}Week by Week}{1}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Week 1}{1}{subsection.2.1}%
+\contentsline {section}{\numberline {2}Week by Week}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Week 1}{2}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Week 2}{2}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Week 3}{3}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Week 4}{8}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}Week 5}{9}{subsection.2.5}%
-\contentsline {subsection}{\numberline {2.6}Week 6}{11}{subsection.2.6}%
-\contentsline {subsection}{\numberline {2.7}Week 11}{14}{subsection.2.7}%
-\contentsline {subsection}{\numberline {2.8}Week 12}{16}{subsection.2.8}%
-\contentsline {subsection}{\numberline {2.9}Week 13}{18}{subsection.2.9}%
-\contentsline {subsection}{\numberline {2.10}Week 14}{21}{subsection.2.10}%
-\contentsline {section}{\numberline {3}Synthesis}{23}{section.3}%
-\contentsline {section}{\numberline {4}Evidence of Participation}{23}{section.4}%
-\contentsline {section}{\numberline {5}Conclusion}{24}{section.5}%
+\contentsline {subsection}{\numberline {2.3}Week 2}{3}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Week 3}{8}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Week 4}{10}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Week 5}{13}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Week 8}{16}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.8}Week 9 and Week 10}{18}{subsection.2.8}%
+\contentsline {subsection}{\numberline {2.9}Week 11 and Week 12}{20}{subsection.2.9}%
+\contentsline {subsection}{\numberline {2.10}Week 13 and Week 14}{23}{subsection.2.10}%
+\contentsline {section}{\numberline {3}Synthesis}{26}{section.3}%
+\contentsline {section}{\numberline {4}Evidence of Participation}{26}{section.4}%
+\contentsline {section}{\numberline {5}Conclusion}{27}{section.5}%

@@ -80,75 +80,96 @@
 \tableofcontents
 
 \section{Introduction}\label{intro}
+This report brings together a series of problems and exercises that reflect a deeper engagement with the foundational ideas of theoretical computer science. Each section builds on prior concepts, combining formal reasoning, algorithmic thinking, and structured problem solving. The goal is to demonstrate a clear understanding of the material through worked examples, precise explanations, and methodical approaches to each challenge. The report emphasizes clarity, logic, and rigor in both presentation and analysis.
+
 
 \section{Week by Week}\label{homework}
 
 \subsection{Week 1}
-\textbf{Lab 1}
-\textbf{Introduction to Automata Theory} \\
-\textbf{Homework Question:} \\
-Characterize all the accepted words (i.e., describe exactly those words that get recognized). \\
-\textbf{Answer:} 
-\begin{lstlisting}
-A word is accepted if it consists of the symbols 5 and 10, and the sum of all symbols is exactly 25.
-A word is accepted if it satisifes the equation: 
-5a + 10b = 25
-a = num of times 5 appears
-b = num of times 10 appears
-a,b = non-negative integers
-valid values of (a,b) are:
-(5,0) = 5,5,5,5,5
-(3,1) = 5,5,5,10
-(1,2) = 5,10,10
-\end{lstlisting}
+\textbf{Homework 1}\\
+\textbf{Introduction to Automata Theory}\\
 
-\textbf{Homework Question:} \\
-Characterize all the accepted words. Can you describe them via a regular expression? \\
-\textbf{Answer:} 
-\begin{lstlisting}
-A word is accepted if it consists of one or more "pay" actions followed by a "push" and this sequence can repeat
-any number of times 
-Expression: 
-(pay + push)+
-\end{lstlisting}
+\vspace{0.5em}
+
+\textbf{Characterize all the accepted words (i.e., describe exactly those words that get recognized).}
+
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
+
+A word is accepted if it consists of the symbols 5 and 10, and the sum of all symbols is exactly 25.
+
+\begin{align*}
+    \text{Let } a &= \text{number of times 5 appears} \\
+    b &= \text{number of times 10 appears} \\
+    a, b &\in \mathbb{N} \\
+    5a + 10b &= 25
+\end{align*}
+
+Valid \((a, b)\) combinations:
+\begin{itemize}
+    \item (5, 0): \quad 5, 5, 5, 5, 5
+    \item (3, 1): \quad 5, 5, 5, 10
+    \item (1, 2): \quad 5, 10, 10
+\end{itemize}
+
+\vspace{1em}
+
+\textbf{Characterize all the accepted words. Can you describe them via a regular expression?}
+
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
+
+A word is accepted if it consists of one or more "pay" actions followed by a "push" action.  
+This sequence can repeat any number of times.
+
+\[
+(\texttt{pay}^+\ \texttt{push})^+
+\]
+
+This ensures that each `push` is preceded by one or more `pay`s, and the entire pattern can repeat.
 
 \subsection{Week 2}
-\textbf{Lab 1}
-\textbf{Deterministic and Non-deterministic Finite Automata (DFAs and NFAs)} \\
-\textbf{Homework Question:} \\
-Determine for the following words, if they are contained in L1, L2, or L3 \\
-\textbf{Answer:} 
-\begin{lstlisting}
-w1 = 10011 
-  L1 = yes 
-  L2 = no 
-  L3 = no 
-w2 = 100 
-  L1 = no 
-  L2 = no
-  L3 = no
-w3 = 10100100
-  L1 = yes
-  L2 = yes
-  L3 = yes
-w4 = 1010011100
-  L1 = yes
-  L2 = no
-  L3 = no
-w5 = 11110000
-  L1 = no
-  L2 = yes
-  L3 = yes
-\end{lstlisting}
+\textbf{Homework 1} \\
+\textbf{Deterministic and Non-deterministic Finite Automata (DFAs and NFAs)}\\
 
-\textbf{Homework Question:} \\
-Consider the paths corresponding to the words w1 = 0010, w2 = 1101,
-and w3 = 1100. For which of these words does their run end in the accepting state? \\
-\textbf{Answer:} 
-\begin{lstlisting}
-Accepted: w1 = 0010, w2 = 1101 
-Not Accepted: w3 = 1100
-\end{lstlisting}
+\vspace{0.5em}
+
+\textbf{Determine for the following words if they are contained in L1, L2, or L3.}
+
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Word} & \textbf{L1} & \textbf{L2} & \textbf{L3} \\
+\hline
+10011 & Yes & No & No \\
+100   & No  & No & No \\
+10100100 & Yes & Yes & Yes \\
+1010011100 & Yes & No & No \\
+11110000 & No & Yes & Yes \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{1em}
+
+\textbf{Consider the paths corresponding to the words w1 = 0010, w2 = 1101, and w3 = 1100. For which of these words does their run end in the accepting state?}
+
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
+
+\begin{itemize}
+    \item \textbf{Accepted:} w1 = 0010, w2 = 1101
+    \item \textbf{Not Accepted:} w3 = 1100
+\end{itemize}
+
+\vspace{1em}
 
 \textbf{ITALC Chapter 2.1 Summary} \\
 This section introduces finite automata through a real-world example: electronic money. 
@@ -162,10 +183,14 @@ To analyze these interactions, each participant's behavior is modeled as a finit
 When combining these automata, the overall system can be examined for vulnerabilities. This method reveals flaws in poorly designed protocols, such as scenarios where the store ships goods but never gets paid. 
 By using automata, we can validate protocols and ensure secure digital transactions.
 
-\subsection{Week 3}
-\textbf{Lab 2} \\
+
+\subsection{Week 2}
+\textbf{Homework 2} \\
 \textbf{Programming (with) Automata} \\
-\textbf{Exercise 2} 
+
+\vspace{0.5em}
+
+\textbf{Code for Exercise 2} 
 \begin{lstlisting}
 dfa.py:
 # a class for DFAs
@@ -257,11 +282,11 @@ bbb: True
 
 \textbf{Exercise 4} 
 \begin{lstlisting}
-1. Accepting State: 4
+Accepting State: 4
 The DFA accepts any string that contains at least one 'b' since reaching state 4 via any 'b' will keep it in an accepting state
 \end{lstlisting}
 
-2. \begin{figure}[h] % 'h' means place it here if possible
+\begin{figure}[h] % 'h' means place it here if possible
     \centering
     \includegraphics[width=0.5\textwidth]{images/Lab2Exercise.jpg} % Adjust width as needed
     \caption{}
@@ -413,186 +438,386 @@ Accepting state: q3
 How does a DFA remember whether it has seen the substring '01' during string processing, and how do the different states (q_0, q_1, q_2) represent the conditions required for acceptance?
 \end{lstlisting}
 
-\subsection{Week 4}
+
+\subsection{Week 3}
 \textbf{Homework 3} \\
 \textbf{Operations on Automata} \\
-\textbf{HW 1 (Extended Transition Function):} 
-\begin{lstlisting}
-1. The automataon A^2 accepts all strings that contain an odd number of As. If a string has an even number of As (including 0) it is rejected
 
-2. A^1: 
-(1,a) -> 2
-(1,b) -> 4
-(1,a) -> 4
-(1,a) -> 4
+\vspace{1em}
+\textbf{HW 1: Extended Transition Function} \\
 
-(1,abaa) = 4
+\textbf{1. Describe the language accepted by \( A^{(2)} \):}
 
-A^2: 
-(1,a) -> 2
-(2,b) -> 1
-(1,b) -> 3
-(3,a) -> 3
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
 
-(1,abba) = 3 (not final state so not accepted)
-\end{lstlisting}
+Automaton \( A^{(2)} \) accepts all strings that end in the state 2, which is the only accepting state.  
+From the diagram, this means the string must cause the automaton to go from state 1 to 2 using an odd number of transitions between 1 and 2 on input \( a \), and not end in state 3 (which has a self-loop).  
+Thus, the language consists of strings that contain an odd number of \( a \)'s causing a final transition into state 2 and do not end in \( b \) after going to state 3.
 
-\textbf{HW 2 (Product Automata:)}\\
-1. \begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.5\textwidth]{images/Homework3.jpg} % Adjust width as needed
-    \caption{}
-\end{figure}
-\begin{lstlisting}
-\textbf{HW 2 (Product Automata:)}
-\begin{lstlisting}
-1. 
+More precisely, \( L(A^{(2)}) \) contains strings where the final character \( a \) transitions to state 2, and earlier transitions may involve state 1 or 3, but must finish at state 2.
 
-2. A string is accpeted by A if and only if it is accepted by both A^1 and A^2
-* By definition, A tracks the simultaneous behavior of A^1 and A^2
-* A string w is accepted in A if and only if both automata reach a final state after processing w
-* Since A is constructed with states (q^1, q^2), the final states of A are precisely those where both components are final
-* This proves the equation
+\vspace{1em}
+\textbf{2. Compute } \( \hat{\delta}^{(1)}(1, abaa) \) (for \( A^{(1)} \)):
 
-3. To change A to recognize L(A^2) U L(A^2) we can modify its final states
-* Rather than requiring both automata to be in final state, we can accept if either automaton is in a final state
-* change from:
-F = F^2 x F^2
-to:
-F' = (F^1 x Q^2) U (Q^1 x F^2)
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
 
-* means string is accepted by either A^1 or A^2
-\end{lstlisting}
+From the diagram:
 
-\textbf{ITALC: Exercise 2.2.7}
-\begin{lstlisting}
-Proof:
-Let A be a DFA, q a state of A such that \delta(q,a) = q for all a. We will prove by induction on the length of the input string w that d(q,w) = q for all w.
+\[
+\begin{aligned}
+\delta^{(1)}(1, a) &= 2 \\
+\delta^{(1)}(2, b) &= 4 \\
+\delta^{(1)}(4, a) &= 2 \\
+\delta^{(1)}(2, a) &= 3 \\
+\end{aligned}
+\]
 
-Base Case: 
-For w = \epsilon, we have d(q,\epsilon) = q by definition, so the base case holds.
+Therefore:
 
-Inductive Step:
-Assume d(q,w) = q for some string w of length n. For w' = wa, we have:
-d(q,w\prime) = \delta(d(q,w),a) = \delta(q,a) = q
-Thus, d(q,w\prime) = q, and the inductive step holds.
+\[
+\hat{\delta}^{(1)}(1, abaa) = \delta^{(1)}(2, a) = 3
+\]
 
-By induction, d(q,w) = q for all w.
-\end{lstlisting}
+Since state 3 is not accepting, the string is \textbf{not accepted}.
 
-\textbf{ITALC: Section 2.3}
-\begin{lstlisting}
+\vspace{1em}
+\textbf{3. Compute } \( \hat{\delta}^{(2)}(1, abba) \) (for \( A^{(2)} \)):
+
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
+
+From the diagram:
+
+\[
+\begin{aligned}
+\delta^{(2)}(1, a) &= 2 \\
+\delta^{(2)}(2, b) &= 1 \\
+\delta^{(2)}(1, b) &= 3 \\
+\delta^{(2)}(3, a) &= 3 \\
+\end{aligned}
+\]
+
+Therefore:
+
+\[
+\hat{\delta}^{(2)}(1, abba) = \delta^{(2)}(3, a) = 3
+\]
+
+Since state 3 is not accepting, the string is \textbf{not accepted}.
+
+\vspace{2em}
+\textbf{HW 2: Product Automaton} \\
+
+\textbf{1. Construct the intersection automaton \( A \) for \( A^{(1)} \) and \( A^{(2)} \):}
+
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
+
+States of \( A \) are ordered pairs \( (q_1, q_2) \) where \( q_1 \in Q^{(1)} \), \( q_2 \in Q^{(2)} \).  
+Transitions follow:
+
+\[
+\delta((p, q), a) = (\delta^{(1)}(p, a), \delta^{(2)}(q, a))
+\]
+
+You only need to draw reachable states from the start state \( (1, 1) \).  
+Final states are \( F = F^{(1)} \times F^{(2)} \), i.e., both components must be in final states.
+
+\vspace{1em}
+\textbf{2. Why is } \( L(A) = L(A^{(1)}) \cap L(A^{(2)}) \)?
+
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
+
+By construction, a string is accepted by the product automaton \( A \) only if it drives both component automata \( A^{(1)} \) and \( A^{(2)} \) to their respective accepting states.  
+Thus, the product automaton simulates both machines in parallel, and only accepts if both would accept individually.
+
+\[
+L(A) = L(A^{(1)}) \cap L(A^{(2)})
+\]
+
+\vspace{1em}
+\textbf{3. How to modify \( A \) to construct \( A' \) such that } \( L(A') = L(A^{(1)}) \cup L(A^{(2)}) \)?
+
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
+
+To accept the union of the languages, we redefine the set of final states to accept if either automaton accepts:
+
+\[
+F' = (F^{(1)} \times Q^{(2)}) \cup (Q^{(1)} \times F^{(2)})
+\]
+
+This means \( A' \) accepts a string if **either** \( A^{(1)} \) or \( A^{(2)} \) accepts it.
+
+\vspace{0.5em}
+
+\textbf{ITALC Section 2.3 Question:}\\
 How does a nondeterministic finite automaton (NFA) process the string "00101" to accept it, and how does it differ from a deterministic finite automaton (DFA) in terms of state transitions?
-\end{lstlisting}
 
-\subsection{Week 5}
+
+\subsection{Week 4}
 \textbf{Homework 4} \\
 \textbf{Determinization of NFAs} \\
-\textbf{HW 1:} 
-\begin{lstlisting}
-1. A DFA is a special case of an NFA. In an NFA, the transition function allows multiple possible states for a given input, while in the DFA, the transition function maps each state and input to a single state.
-Since every DFA is inherently an NFA where the transition function always returns a unique next state, we can view A as an NFA without making any modifications. We reinterpret the DFA as an NFA where:
-* The state set remains the same
-* The transition function is modified to return singleton sets
-* The start state and accepting state remain unchanged
 
-2. Given a general DFA A = (Q, sigma, delta, q0, F) we can define an equivalent NFA A' = (Q', sigma', delta', q0', F') where:
-Q' = Q
-sigma remains the same
-delta': Q' x sigma -> P(Q') is defined as:
-delta'(q,a) = {delta(q,a)} for all q belongs to Q, a belongs to sigma
-This ensures that each transition in A is preserved but is now viewed as returning a set of states rather than a single state
-q'0 = q0 (initial state remains unchanged)
-F' = F (final states remain unchanged)
-\end{lstlisting}
+\textbf{HW 1:} \\
+\textbf{1. Explain how you can view \( \mathcal{A} \) as an NFA.}
 
-\textbf{HW 2:} 
-\begin{lstlisting}
-1. Looking at the NFA:
-* It starts at q0, where it loops on both 0 and 1
-* A transition to q1, happens on input 1
-* From q1, it can go to q2 on 0 or back to itself on 1
-* From q2, it transitions to q3 on 0
-* q3 is a final state and loops on both 0 and 1
-The NFA recognizes the language of binary strings that contain 100 as a substring. The accepting state q3 is reached whenever the sequence 100 appears, and it stays in q3 accepting all further inputs
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
 
-2. NFA A given by:
-* Q = {q0, q1, q2, a3}
-* Sigma = {0,1}
-* Transition function delta:
-delta(q0, 0) = {q0}
-delta(q0, 1) = {q0,q1}
-delta(q1, 0) = {q2}
-delta(q1, 1) = {q1}
-delta(q2, 0) = {q3}
-delta(q2, 1) = {q1}
-delta(q3, 0) = {q3}
-delta(q3, 1) = {q3}
-* Start state: q0
-* Accepting states: F = {q3}
+Every DFA is a special case of an NFA. In a DFA, the transition function  
+\[
+\delta : Q \times \Sigma \to Q
+\]  
+maps each state and input to a single state, while in an NFA, the transition function is defined as  
+\[
+\delta' : Q \times \Sigma \to \mathcal{P}(Q),
+\]  
+where \( \mathcal{P}(Q) \) is the power set of \( Q \), i.e., a set of possible next states.
 
-3. Step by step
-  1. delta^(q0,1) = {q0,q1} (since q0 transitions to both itself and q1 on 1)
-  2. delta^({q0, q1}, 0) = {q0, q2} (since q0 loops on 0 and q1 moves to q2)
-  3. delta^({q0, q2}, 1) = {q0, q1} (since q0 loops on 1 and q2 transitions to q1 on 1)
-  4. delta^({q0, q1}, 1) = {q0, q1} (same reason as step 1)
-  5. delta^({q0, q1}, 0) = {q0, q2} (same reason as step 2)
-Final states: {q0,q2} which does not include q3, so 101110 is rejected
-\end{lstlisting}
-\textbf{4 and 5. }\\
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=0.5\textwidth]{images/homework4.jpg} 
-    \caption{}
-\end{figure}
+To interpret a DFA \( \mathcal{A} \) as an NFA, we define a new transition function \( \delta' \) such that:
+\[
+\delta'(q, a) = \{ \delta(q, a) \}
+\]
+for every \( q \in Q \), \( a \in \Sigma \). This simply wraps each deterministic transition in a singleton set.
 
-\begin{lstlisting}
-6. {q0,q2,q3} and {q0,q1,q3} can be combined into one state
+Thus, the same DFA can be viewed as an NFA \( \mathcal{A}' = (Q, \Sigma, \delta', q_0, F) \) where:
+\begin{itemize}
+    \item The set of states and alphabet remain unchanged
+    \item The start state and accepting states remain the same
+    \item The transition function now returns sets instead of single values, but the accepted language does not change
+\end{itemize}
 
-\end{lstlisting}
+\textbf{Therefore, \( L(\mathcal{A}) = L(\mathcal{A}') \)}.
+
+\vspace{1em}
+\textbf{2. General construction: define an NFA \( \mathcal{A}' \) from a DFA \( \mathcal{A} = (Q, \Sigma, \delta, q_0, F) \) such that \( L(\mathcal{A}') = L(\mathcal{A}) \).}
+
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
+
+Define \( \mathcal{A}' = (Q', \Sigma, \delta', q_0', F') \), where:
+\begin{align*}
+Q' &= Q \\
+q_0' &= q_0 \\
+F' &= F \\
+\delta'(q, a) &= \{ \delta(q, a) \} \quad \text{for all } q \in Q,\, a \in \Sigma
+\end{align*}
+
+This construction ensures that the NFA simulates exactly the same transitions as the DFA but within the more general NFA framework.
+
+\vspace{1em}
+\textbf{3. Extended transition function computation and example strings}
+
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
+
+Let us compute the extended transition \( \hat{\delta} \) for two example strings:
+
+Let \( \mathcal{A} \) be the DFA from the diagram. The transitions are:
+
+\begin{itemize}
+    \item \( \delta(1, a) = 2 \)
+    \item \( \delta(1, b) = 1 \)
+    \item \( \delta(2, a) = 2 \)
+    \item \( \delta(2, b) = 3 \)
+    \item \( \delta(3, a) = 3 \), \( \delta(3, b) = 3 \)
+\end{itemize}
+
+Now compute:
+\[
+\hat{\delta}(1, abab) = \delta(3, b) = 3 \quad \Rightarrow \text{Accepted}
+\]
+
+If \( v = aba \), we get:
+\[
+\hat{\delta}(1, aba) = \delta(3, a) = 3 \quad \Rightarrow \text{Accepted}
+\]
+
+And for \( w = abba \):
+\[
+\hat{\delta}(1, abba) = \delta(3, a) = 3 \quad \Rightarrow \text{Accepted}
+\]
+
+Because state 3 is accepting, all of these strings are in \( L(\mathcal{A}) \).
+
+
+\textbf{HW 2:} \\
+\textbf{Language Description and Specification of the NFA}
+
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
+
+The NFA \( A \) accepts binary strings that contain the substring "100". The accepting state \( q_3 \) is reached after reading this substring, and from there, the automaton accepts any further symbols via self-loops.
+
+\textbf{Formal specification of \( A = (Q, \Sigma, \delta, q_0, F) \):}
+\begin{itemize}
+    \item \( Q = \{ q_0, q_1, q_2, q_3 \} \)
+    \item \( \Sigma = \{ 0, 1 \} \)
+    \item Transition function \( \delta \):
+    \[
+    \begin{aligned}
+        \delta(q_0, 0) &= \{ q_0 \} \\
+        \delta(q_0, 1) &= \{ q_0, q_1 \} \\
+        \delta(q_1, 0) &= \{ q_2 \} \\
+        \delta(q_1, 1) &= \{ q_1 \} \\
+        \delta(q_2, 0) &= \{ q_3 \} \\
+        \delta(q_2, 1) &= \{ q_1 \} \\
+        \delta(q_3, 0) &= \{ q_3 \} \\
+        \delta(q_3, 1) &= \{ q_3 \} \\
+    \end{aligned}
+    \]
+    \item Start state: \( q_0 \)
+    \item Final states: \( F = \{ q_3 \} \)
+\end{itemize}
+
+\vspace{1em}
+\textbf{Extended Transition Function:} Compute \( \hat{\delta}(q_0, 10110) \) step by step.
+
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
+
+\begin{itemize}
+    \item Step 1: \( \delta(q_0, 1) = \{ q_0, q_1 \} \)
+    \item Step 2: \( \delta(\{ q_0, q_1 \}, 0) = \{ q_0, q_2 \} \)
+    \item Step 3: \( \delta(\{ q_0, q_2 \}, 1) = \{ q_0, q_1 \} \)
+    \item Step 4: \( \delta(\{ q_0, q_1 \}, 1) = \{ q_0, q_1 \} \)
+    \item Step 5: \( \delta(\{ q_0, q_1 \}, 0) = \{ q_0, q_2 \} \)
+\end{itemize}
+
+\textbf{Result:} The final state set is \( \{ q_0, q_2 \} \), which does \textbf{not} include \( q_3 \), so the string is \textbf{not accepted}.
+
+\vspace{1em}
+\textbf{Paths for \( v = 1100 \) and \( w = 1010 \):}
+
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
+
+\textbf{For \( v = 1100 \):}
+\begin{itemize}
+    \item \( \delta(q_0, 1) = \{ q_0, q_1 \} \)
+    \item From \( q_0 \), reading 1 again → \( \{ q_0, q_1 \} \)
+    \item From \( q_1 \), reading 0 → \( q_2 \)
+    \item From \( q_2 \), reading 0 → \( q_3 \) (accepting)
+\end{itemize}
+Accepted (there exists a path to \( q_3 \))
+
+\textbf{For \( w = 1010 \):}
+\begin{itemize}
+    \item \( \delta(q_0, 1) = \{ q_0, q_1 \} \)
+    \item From \( q_0 \), reading 0 → \( q_0 \)
+    \item From \( q_1 \), reading 0 → \( q_2 \)
+    \item From \( q_2 \), reading 1 → \( q_1 \)
+    \item From \( q_0, q_2, q_1 \), reading 0 → \( \{ q_0, q_2 \} \)
+\end{itemize}
+Rejected (no path ends at \( q_3 \))
+
+\vspace{1em}
+\textbf{Power Set Construction – Determinization \( A^D \):}
+
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
+
+Construct DFA \( A^D \) where:
+\begin{itemize}
+    \item States are subsets of \( Q \)
+    \item Start state: \( \{ q_0 \} \)
+    \item Accepting states: Any set containing \( q_3 \)
+    \item Transitions: Defined by union of transitions from each state in the subset
+\end{itemize}
+
+Example states in \( A^D \):
+\begin{itemize}
+    \item \( \{ q_0 \} \)
+    \item \( \{ q_0, q_1 \} \)
+    \item \( \{ q_0, q_2 \} \)
+    \item \( \{ q_3 \} \)
+    \item \( \{ q_0, q_2, q_3 \} \)
+    \item etc.
+\end{itemize}
+
+\vspace{0.5em}
+\textbf{Verify that \( L(A) = L(A^D) \):}  
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
+Each string accepted by the NFA has a corresponding run in the DFA on the subset states. The DFA constructed via the power set construction simulates all nondeterministic behaviors in parallel, and accepts a string if any computation path ends in an accepting state.  
+Thus, \( L(A^D) = L(A) \).
+
+\vspace{1em}
+\textbf{Is there a smaller DFA?}  
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
+Yes, many subset states of \( A^D \) are unreachable or equivalent. For example, \( \{ q_0, q_2, q_3 \} \) and \( \{ q_0, q_3 \} \) behave similarly after reaching \( q_3 \), because the machine stays in \( q_3 \) indefinitely. So states containing \( q_3 \) can be collapsed in a minimized version.
+
+ \vspace{1em}
  
-\textbf{ITALC: Section 3.1, 3.2.1, 3.2.2}
-\begin{lstlisting}
-Question: What does the Kleene star operation represent in the context of regular expressions?
-\end{lstlisting}
+\textbf{ITALC Section 3.1, 3.2.1, 3.2.2 Question:}\\
+What does the Kleene star operation represent in the context of regular expressions?
 
-\subsection{Week 6}
-\textbf{Homework 5}
-\textbf{ITALC 3.2} \\
-\textbf{Section 3.2.1} \\
-a. Here, \( R_{ij}^{(0)} \) represents the regular expression for transitioning from state \( q_i \) to state \( q_j \) using exactly zero states as intermediates. These are simply based on the direct transitions:
 
-\[
-\begin{aligned}
-R_{11}^{(0)} &= \emptyset \quad \text{(No direct loop on \( q_1 \))} \\
-R_{12}^{(0)} &= 0 \quad \text{(From \( q_1 \) to \( q_2 \) on input 0)} \\
-R_{13}^{(0)} &= \emptyset \quad \text{(No direct transition from \( q_1 \) to \( q_3 \))} \\
-R_{21}^{(0)} &= 1 \quad \text{(From \( q_2 \) to \( q_1 \) on input 1)} \\
-R_{22}^{(0)} &= \emptyset \quad \text{(No direct loop on \( q_2 \))} \\
-R_{23}^{(0)} &= 0 \quad \text{(From \( q_2 \) to \( q_3 \) on input 0)} \\
-R_{31}^{(0)} &= \emptyset \quad \text{(No direct transition from \( q_3 \) to \( q_1 \))} \\
-R_{32}^{(0)} &= 1 \quad \text{(From \( q_3 \) to \( q_2 \) on input 1)} \\
-R_{33}^{(0)} &= 0 \quad \text{(From \( q_3 \) to itself on input 0)} \\
-\end{aligned}
-\]
+\subsection{Week 5}
+\textbf{Homework 5} \\
+\textbf{ITALC Section 3.2 – State Elimination and Regular Expressions} \\
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
+\subsubsection*{3.2.1 (a) – Initial Expressions \( R_{ij}^{(0)} \)}
 
-b. Now we calculate the regular expressions using one intermediate state (state \( q_1 \)).
+Here, \( R_{ij}^{(0)} \) represents the regular expression describing transitions from state \( q_i \) to \( q_j \) using zero intermediate states.
 
 \[
 \begin{aligned}
-R_{11}^{(1)} &= R_{11}^{(0)} \cup (R_{12}^{(0)} R_{21}^{(0)}) = \emptyset \cup (0 \cdot 1) = 01 \\
-R_{12}^{(1)} &= R_{12}^{(0)} \cup (R_{12}^{(0)} R_{22}^{(0)}) = 0 \cup (0 \cdot \emptyset) = 0 \\
-R_{13}^{(1)} &= R_{13}^{(0)} \cup (R_{12}^{(0)} R_{23}^{(0)}) = \emptyset \cup (0 \cdot 0) = 00 \\
-R_{21}^{(1)} &= R_{21}^{(0)} \cup (R_{22}^{(0)} R_{21}^{(0)}) = 1 \cup (\emptyset \cdot 1) = 1 \\
-R_{22}^{(1)} &= R_{22}^{(0)} \cup (R_{22}^{(0)} R_{22}^{(0)}) = \emptyset \cup (\emptyset \cdot \emptyset) = \emptyset \\
-R_{23}^{(1)} &= R_{23}^{(0)} \cup (R_{22}^{(0)} R_{23}^{(0)}) = 0 \cup (\emptyset \cdot 0) = 0 \\
-R_{31}^{(1)} &= R_{31}^{(0)} \cup (R_{32}^{(0)} R_{21}^{(0)}) = \emptyset \cup (1 \cdot 1) = 11 \\
-R_{32}^{(1)} &= R_{32}^{(0)} \cup (R_{32}^{(0)} R_{22}^{(0)}) = 1 \cup (1 \cdot \emptyset) = 1 \\
-R_{33}^{(1)} &= R_{33}^{(0)} \cup (R_{32}^{(0)} R_{23}^{(0)}) = 0 \cup (1 \cdot 0) = 10 \\
+R_{11}^{(0)} &= \emptyset &\text{(No loop on } q_1) \\
+R_{12}^{(0)} &= 0         &\text{(Transition from } q_1 \to q_2 \text{ on 0)} \\
+R_{13}^{(0)} &= \emptyset &\text{(No direct } q_1 \to q_3) \\
+R_{21}^{(0)} &= 1         &\text{(Transition from } q_2 \to q_1 \text{ on 1)} \\
+R_{22}^{(0)} &= \emptyset &\text{(No loop on } q_2) \\
+R_{23}^{(0)} &= 0         &\text{(Transition from } q_2 \to q_3 \text{ on 0)} \\
+R_{31}^{(0)} &= \emptyset &\text{(No } q_3 \to q_1) \\
+R_{32}^{(0)} &= 1         &\text{(Transition from } q_3 \to q_2 \text{ on 1)} \\
+R_{33}^{(0)} &= 0         &\text{(Loop on } q_3 \text{ on 0)} \\
 \end{aligned}
 \]
 
-c. Now we calculate the regular expressions using up to two intermediate states (\( q_1 \) and \( q_2 \)).
+\subsubsection*{3.2.1 (b) – Expressions with One Intermediate State}
+
+Using only state \( q_1 \) as an intermediate:
+
+\[
+\begin{aligned}
+R_{11}^{(1)} &= \emptyset \cup (0 \cdot 1) = 01 \\
+R_{12}^{(1)} &= 0 \cup (0 \cdot \emptyset) = 0 \\
+R_{13}^{(1)} &= \emptyset \cup (0 \cdot 0) = 00 \\
+R_{21}^{(1)} &= 1 \cup (\emptyset \cdot 1) = 1 \\
+R_{22}^{(1)} &= \emptyset \cup (\emptyset \cdot \emptyset) = \emptyset \\
+R_{23}^{(1)} &= 0 \cup (\emptyset \cdot 0) = 0 \\
+R_{31}^{(1)} &= \emptyset \cup (1 \cdot 1) = 11 \\
+R_{32}^{(1)} &= 1 \cup (1 \cdot \emptyset) = 1 \\
+R_{33}^{(1)} &= 0 \cup (1 \cdot 0) = 10 \\
+\end{aligned}
+\]
+
+\subsubsection*{3.2.1 (c) – Expressions with Two Intermediate States}
+
+Using \( q_1 \) and \( q_2 \) as intermediates:
 
 \[
 \begin{aligned}
@@ -608,157 +833,128 @@ R_{33}^{(2)} &= 10 \cup (1 \cdot 0 \cdot 0) = 10 \cup 100 = 10 \\
 \end{aligned}
 \]
 
-d. The language of the automaton is defined by all possible strings leading to the final state \( q_3 \). 
+\subsubsection*{3.2.1 (d) – Final Regular Expression for the Language}
 
-We observe:
-- \( q_3 \) is the only accepting state.
-- The simplest regular expression can be derived by considering all transitions leading to \( q_3 \).
-- The language consists of strings ending in 00 or 000, as they lead to the final state.
-
-Thus, the regular expression for the language is:
+We aim to describe all strings leading to the accepting state \( q_3 \). Based on transitions and paths derived above, the strings that reach \( q_3 \) must include sequences like 00 or 000. A valid regular expression capturing this behavior is:
 
 \[
 (0^*1^*0^*0)
 \]
 
-\textbf{Section 3.2.1} \\
-c. Using up to two intermediate states (\( q_1 \) and \( q_2 \)), we calculate the regular expressions for all state pairs:
+---
 
+\textbf{ITALC Section 4.4 – DFA Minimization} 
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
+
+\subsubsection*{4.4.1 – Distinguishability Table}
+
+\textbf{Step 1: Initial table}
 \[
-\begin{aligned}
-R_{11}^{(2)} &= R_{11}^{(1)} \cup (R_{12}^{(1)} R_{21}^{(1)}) = \epsilon \cup (0 \cdot 1) = \epsilon \cup 01 \\
-R_{12}^{(2)} &= R_{12}^{(1)} \cup (R_{12}^{(1)} R_{22}^{(1)}) = 0 \cup (0 \cdot \epsilon) = 0 \\
-R_{13}^{(2)} &= R_{13}^{(1)} \cup (R_{12}^{(1)} R_{23}^{(1)}) = 1 \cup (0 \cdot 0) = 1 \cup 00 \\
-R_{21}^{(2)} &= R_{21}^{(1)} \cup (R_{22}^{(1)} R_{21}^{(1)}) = 1 \cup (\epsilon \cdot 1) = 1 \cup 1 = 1 \\
-R_{22}^{(2)} &= R_{22}^{(1)} \cup (R_{22}^{(1)} R_{22}^{(1)}) = \epsilon \cup (\epsilon \cdot \epsilon) = \epsilon \\
-R_{23}^{(2)} &= R_{23}^{(1)} \cup (R_{22}^{(1)} R_{23}^{(1)}) = 0 \cup (\epsilon \cdot 0) = 0 \\
-R_{31}^{(2)} &= R_{31}^{(1)} \cup (R_{32}^{(1)} R_{21}^{(1)}) = 1 \cup (1 \cdot 1) = 1 \cup 11 \\
-R_{32}^{(2)} &= R_{32}^{(1)} \cup (R_{32}^{(1)} R_{22}^{(1)}) = 1 \cup (1 \cdot \epsilon) = 1 \\
-R_{33}^{(2)} &= R_{33}^{(1)} \cup (R_{32}^{(1)} R_{23}^{(1)}) = \epsilon \cup (1 \cdot 0) = \epsilon \cup 10 \\
-\end{aligned}
-\]
-
-d. The language of the DFA consists of all possible strings that lead to the accepting state \( q_3 \). From the table, we observe that:
-
-- State \( q_3 \) is the accepting state.
-- \( q_3 \) can be reached directly using \( 1 \) or through sequences like \( 00 \).
-- Using the repeating structure, the regular expression for the language can be written as:
-
-\[
-1^* (00)^* 1^*
-\]
-
-This expression represents all valid sequences accepted by the DFA.
-
-\noindent\textbf{ITALC 4.4 — Section 4.4.1}
-a. 
-\[
-\begin{array}{c|ccccc}
-    & q_1 & q_2 & q_3 \\
+\begin{array}{c|ccc}
+     & q_1 & q_2 & q_3 \\
 \hline
-q_1 &     &     &     \\
-q_2 &     &     &     \\
-q_3 &     &     &     \\
+q_1 & \epsilon &     &     \\
+q_2 &          & \epsilon &     \\
+q_3 &          &          & \epsilon \\
 \end{array}
 \]
 
-1. **Mark accepting and non-accepting pairs**:  
-    - \( (q_1, q_3) \) and \( (q_2, q_3) \) since \( q_3 \) is accepting.
+\textbf{Step 2: Mark distinguishable pairs}  
+Since \( q_3 \) is the only accepting state:
 
-2. **Apply transitions**:  
-    - On input **0** and **1**, follow state transitions and check if they lead to distinguishable pairs.
-    - Update the table accordingly.
+- Mark \( (q_1, q_3) \) and \( (q_2, q_3) \)
 
-3. **Final table**:
-
+\textbf{Step 3: Final refined table}
 \[
-\begin{array}{c|ccccc}
-    & q_1 & q_2 & q_3 \\
+\begin{array}{c|ccc}
+     & q_1 & q_2 & q_3 \\
 \hline
-q_1 & \epsilon & \text{Indistinguishable} & \text{Distinguishable} \\
-q_2 & \text{Indistinguishable} & \epsilon & \text{Distinguishable} \\
-q_3 & \text{Distinguishable} & \text{Distinguishable} & \epsilon \\
+q_1 & \epsilon & \text{Indist.} & \text{Dist.} \\
+q_2 & \text{Indist.} & \epsilon & \text{Dist.} \\
+q_3 & \text{Dist.} & \text{Dist.} & \epsilon \\
 \end{array}
 \]
 
-b. 
-- **\( q_1 \) and \( q_2 \) are equivalent** because they are not distinguishable.
-- \( q_3 \) remains separate as it is distinguishable from all others.
+\subsubsection*{4.4.1 (b) – Reduced DFA Construction}
 
-Thus, the reduced DFA has:
-- **Two states**: \( [q_1, q_2] \) and \( q_3 \).
-- **Transitions**:
-  - \( [q_1, q_2] \xrightarrow{0} [q_1, q_2] \)
-  - \( [q_1, q_2] \xrightarrow{1} q_3 \)
-  - \( q_3 \xrightarrow{0} [q_1, q_2] \)
-  - \( q_3 \xrightarrow{1} [q_1, q_2] \)
-- **Start state**: \( [q_1, q_2] \)
-- **Accepting state**: \( q_3 \)
+- Merge \( q_1 \) and \( q_2 \) (indistinguishable)
+- Keep \( q_3 \) separate
 
+\textbf{New states:}  
+- \( [q_1, q_2] \)  
+- \( q_3 \)
 
-\textbf{Section 4.4.2} \\
-a. 
-\[
-\begin{array}{c|cccc}
-    & A & B & C & D \\
-\hline
-A & \epsilon &  &  &  \\
-B &  & \epsilon &  &  \\
-C &  &  & \epsilon &  \\
-D &  &  &  & \epsilon \\
-\end{array}
-\]
+\textbf{Transitions:}
+\begin{itemize}
+    \item \( [q_1, q_2] \xrightarrow{0} [q_1, q_2] \)
+    \item \( [q_1, q_2] \xrightarrow{1} q_3 \)
+    \item \( q_3 \xrightarrow{0} [q_1, q_2] \)
+    \item \( q_3 \xrightarrow{1} [q_1, q_2] \)
+\end{itemize}
 
-1. **Mark accepting and non-accepting pairs**:  
-   - If one state is accepting and the other is not, mark them as distinguishable.
+\textbf{Start state:} \( [q_1, q_2] \), \quad \textbf{Accepting state:} \( q_3 \)
 
-2. **Apply transitions**:  
-   - Check where states transition on inputs **0** and **1**.
-   - If transitions lead to distinguishable pairs, update the table.
+---
 
-3. **Final table after refinement**:
+\textbf{ITALC Section 4.4.2 – Larger DFA Minimization} \\
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
+\subsubsection*{Distinguishability Table (Partial)}
 
 \[
 \begin{array}{c|cccc}
-    & A & B & C & D \\
+     & A & B & C & D \\
 \hline
-A & \epsilon & \text{Indistinguishable} & \text{Distinguishable} & \text{Distinguishable} \\
-B & \text{Indistinguishable} & \epsilon & \text{Distinguishable} & \text{Indistinguishable} \\
-C & \text{Distinguishable} & \text{Distinguishable} & \epsilon & \text{Distinguishable} \\
-D & \text{Distinguishable} & \text{Indistinguishable} & \text{Distinguishable} & \epsilon \\
+A & \epsilon & \text{Indist.} & \text{Dist.} & \text{Dist.} \\
+B & \text{Indist.} & \epsilon & \text{Dist.} & \text{Indist.} \\
+C & \text{Dist.} & \text{Dist.} & \epsilon & \text{Dist.} \\
+D & \text{Dist.} & \text{Indist.} & \text{Dist.} & \epsilon \\
 \end{array}
 \]
 
-b. 
-- **\( C, F, I \) are equivalent** because they are all accepting states and indistinguishable.  
-- **\( D \) and \( G \) are equivalent**, as they have the same transitions.  
-- **\( E \) and \( H \) are equivalent**, as they behave identically.  
+\subsubsection*{Equivalence Classes and Reduced DFA}
 
-Thus, the reduced DFA has:  
-- **Five states**: \( [A] \), \( [B] \), \( [C, F, I] \), \( [D, G] \), \( [E, H] \).  
-- **Transitions**:  
-  - \( [A] \xrightarrow{0} [B] \)  
-  - \( [A] \xrightarrow{1} [E, H] \)  
-  - \( [B] \xrightarrow{0} [C, F, I] \)  
-  - \( [B] \xrightarrow{1} [E, H] \)  
-  - \( [C, F, I] \xrightarrow{0} [D, G] \)  
-  - \( [C, F, I] \xrightarrow{1} [H, E] \)  
-  - \( [D, G] \xrightarrow{0} [E, H] \)  
-  - \( [D, G] \xrightarrow{1} [C, F, I] \)  
-  - \( [E, H] \xrightarrow{0} [A] \)  
-  - \( [E, H] \xrightarrow{1} [C, F, I] \)  
-- **Start state**: \( [A] \)  
-- **Accepting state**: \( [C, F, I] \)  
+\begin{itemize}
+    \item \( [C, F, I] \): all accepting, indistinguishable
+    \item \( [D, G] \): equivalent
+    \item \( [E, H] \): equivalent
+\end{itemize}
 
-\textbf{ITALC: 3.2 and 4.4}
-\begin{lstlisting}
-Question: How does the minimization of a DFA impact its computational efficiency, and are there cases where minimizing a DFA could be detrimental rather than beneficial?
-\end{lstlisting}
+\textbf{New states:}  
+- \( [A] \), \( [B] \), \( [C, F, I] \), \( [D, G] \), \( [E, H] \)
 
-\subsection{Week 11}
+\textbf{Transitions:}
+\begin{itemize}
+    \item \( [A] \xrightarrow{0} [B], \quad [A] \xrightarrow{1} [E, H] \)
+    \item \( [B] \xrightarrow{0} [C, F, I], \quad [B] \xrightarrow{1} [E, H] \)
+    \item \( [C, F, I] \xrightarrow{0} [D, G], \quad [C, F, I] \xrightarrow{1} [E, H] \)
+    \item \( [D, G] \xrightarrow{0} [E, H], \quad [D, G] \xrightarrow{1} [C, F, I] \)
+    \item \( [E, H] \xrightarrow{0} [A], \quad [E, H] \xrightarrow{1} [C, F, I] \)
+\end{itemize}
+
+\textbf{Start state:} \( [A] \), \quad \textbf{Accepting state:} \( [C, F, I] \)
+
+---
+
+\subsubsection*{ITALC 3.2 and 4.4 Question:}
+
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
+
+How does the minimization of a DFA impact its computational efficiency, and are there cases where minimizing a DFA could be detrimental rather than beneficial?
+
+
+\subsection{Week 8}
 \textbf{Homework 6 and 7}\\
 \textbf {Computability, Turing machines, (un)decidability}\\
 \textbf{Exercise A}
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
 \begin{enumerate}
 \item Write a Turing Machine to accept the language of binary strings \( L = \{10^n : n \in \mathbb{N} \} \), and for input \( 10^n \), it returns the string \( 10^{n+1} \).
 \begin{itemize}
@@ -821,7 +1017,9 @@ $q_0$ & B & B & N & halt \\
 \textbf{Problems on Decidability}\\
 \textbf{Exercise 1}\\
 Which of the following languages are decidable, recursively enumerable (r.e.), or have recursively enumerable complement (co-r.e.)?
-
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
 \begin{enumerate}
     \item \( L_1 := \{ M \mid \text{$M$ halts on itself} \} \)
     
@@ -844,7 +1042,9 @@ Which of the following languages are decidable, recursively enumerable (r.e.), o
 
 \textbf{Exercise 2}\\
 Which of the following statements is true? If yes, give an argument; if no, give a counterexample.
-
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
 \begin{enumerate}
     \item If \( L_1 \) and \( L_2 \) are decidable, then so is \( L_1 \cup L_2 \).
     
@@ -871,16 +1071,23 @@ Which of the following statements is true? If yes, give an argument; if no, give
     \textbf{Answer:} True. Given an r.e. machine for \( L \), we can build a machine for \( L^* \) using non-determinism to guess how to split the input and simulate each piece. Since TMs are allowed to be non-deterministic when recognizing r.e. languages, this works.
 \end{enumerate}
 
-\textbf{ITALC Sections: 8.1, 8.2, 9.1, 9.2 Questions}
+\textbf{ITALC 8.1, 8.2, 9.1, 9.2 Questions:}
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
 \begin{itemize}
   \item Why are Turing machines used instead of actual programming languages when discussing undecidability?
   \item What makes the diagonalization language \( L_d \) so important in proving that some languages are not even recursively enumerable?
 \end{itemize}
 
-\subsection{Week 12}
+
+\subsection{Week 9 and Week 10}
 \textbf{Homework 8 and 9}\\
 \textbf {Landau Notation ("Big O"), or Mathematics as a Metaphor}\\
 \textbf{Exercise 1} \\
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
 Let log denote the natural logarithm, i.e., the logarithm w.r.t. the base e. Order the following functions by their order of growth (from slow to fast):
 \begin{enumerate}
   \item (f) \(\log(\log n)\)
@@ -894,7 +1101,9 @@ Let log denote the natural logarithm, i.e., the logarithm w.r.t. the base e. Ord
 \end{enumerate}
 
 \textbf{Exercise 2}
-
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
 For functions \( f, g, h \colon \mathbb{N} \to \mathbb{R}_{\geq 0} \), prove the following:
 
 \begin{enumerate}
@@ -920,7 +1129,9 @@ For functions \( f, g, h \colon \mathbb{N} \to \mathbb{R}_{\geq 0} \), prove the
 \end{enumerate}
 
 \textbf{Exercise 3}
-
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
 Let \( i, j, k, n \in \mathbb{N} \). Prove the following:
 
 \begin{enumerate}
@@ -948,7 +1159,9 @@ Let \( i, j, k, n \in \mathbb{N} \). Prove the following:
 
 \textbf {2 point Participation Points}\\
 \textbf{Exercise 4}
-
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
 Which relationships do we have between the following? Prove your claim.
 
 \begin{enumerate}
@@ -984,7 +1197,9 @@ Which relationships do we have between the following? Prove your claim.
 \end{enumerate}
 
 \textbf{Exercise 5}
-
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
 Classic examples of the above come from sorting. Discuss the comparisons of the runtimes of the following algorithms:
 
 \begin{enumerate}
@@ -1001,13 +1216,19 @@ Classic examples of the above come from sorting. Discuss the comparisons of the 
     \textbf{Comparison:} Both have average-case runtimes of \( \mathcal{O}(n \log n) \). Merge sort guarantees this in the worst case, while quick sort can degrade to \( \mathcal{O}(n^2) \) if poor pivot choices are made. However, quick sort is usually faster in practice due to better cache performance and lower constant factors.
 \end{enumerate}
 
-\textbf{ITALC Sections 10.1-10.3 Question}
+\textbf{ITALC 10.1-10.3 Question:}
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
 Since the theory of intractibility is based on the unproven assumption that P does not equal NP, what would be the practical implications for fields like cryptography, optimization, or artifical intelligence if it were eventually proven that P = NP?
 
-\subsection{Week 13}
+\subsection{Week 11 and Week 12}
 \textbf{Homework 10 and 11}\\
 \textbf{Problems on SAT}\\
-\textbf{Exercise 1} \\
+\textbf{Exercise 1} 
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
 Rewrite the following formulas in CNF:
 \begin{enumerate}
     \item $\varphi_1 := \neg((a \land b) \lor (\neg c \land d))$
@@ -1048,7 +1269,10 @@ Rewrite the following formulas in CNF:
     \]
 \end{enumerate}
 
-\textbf{Exercise 2} \\
+\textbf{Exercise 2} 
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
 Are the following formulas satisfiable? For each one, if yes, give an assignment that makes it true; if not, explain why there do not exist any.
 
 \begin{enumerate}
@@ -1130,7 +1354,10 @@ Are the following formulas satisfiable? For each one, if yes, give an assignment
     \end{flushleft}
 \end{enumerate}
 
-\textbf{Exercise 3 (Encoding Sudoku)} \\
+\textbf{Exercise 3 (Encoding Sudoku)} 
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
 
 We encode Sudoku constraints using boolean variables \( x_{r,c,v} \), where \( r, c, v \in \{1, \ldots, 9\} \). The variable \( x_{r,c,v} \) is true if and only if the entry at row \( r \), column \( c \) contains the number \( v \).
 
@@ -1179,12 +1406,18 @@ C_6 := \bigwedge_{(r,c,v) \in G} x_{r,c,v}
 \]
 \end{flushleft}
 
-\textbf{ITALC Sections 10.1-10.2 Question}\\
+\textbf{ITALC 10.1-10.2 Question:}
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
 If Kruskal’s algorithm is in P and SAT is NP-complete, what does this say about the difference between easy and hard problems?
 
-\subsection{Week 14}
+\subsection{Week 13 and Week 14}
 \textbf{Homework 12 and 13}\\
 \textbf{Exercise 1: Maximal Flow and Minimal Cut} \\
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
 \textbf{1: Compute a maximal flow using the Ford-Fulkerson algorithm.}\\
 We start with all flows initialized to 0, and look for augmenting paths with available capacity from $s$ to $t$. We augment flow along those paths until no more such paths exist.
 
@@ -1236,7 +1469,10 @@ c(s,a) + c(s,b) = 10 + 10 = \boxed{10}
 
 \textbf{No}, the maximal flow is not necessarily unique. There may be multiple sets of flows along different paths that achieve the same total flow value. The Ford-Fulkerson algorithm can produce different valid flows depending on the order in which augmenting paths are selected.
 
-\textbf{Exercise 2: An Unknown Algorithm}\\
+\textbf{Exercise 2: An Unknown Algorithm}
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
 Consider the following algorithm:
 
 \begin{verbatim}
@@ -1324,10 +1560,14 @@ Therefore, the worst-case running time of the algorithm is:
 \boxed{\mathcal{O}(n^3)}
 \]
 
-\textbf{GTAECS 14.1-14.4 Question}\\
+\textbf{GTAECS 14.1-14.4 Question:}
+\vspace{0.5em}
+\hrule
+\vspace{0.5em}
 How does the max-flow min-cut theorem ensure that the graph-theoretic approach always finds the true maximum flow, and why is this often more efficient than solving via linear programming?
 
 \section{Synthesis}
+Across the various topics explored in this report, a consistent theme is the importance of structured, logical thinking in solving complex problems. Whether working through algorithm analysis, logical reasoning, or computational models, the ability to break down problems into formal components proves essential. The exercises demonstrate how abstract mathematical tools, like formal languages or graph-based models, can be used to understand and solve practical computational challenges. Ultimately, this process reinforces the value of theoretical foundations in computer science, both as a lens for problem solving and as a framework for thinking critically about efficiency, correctness, and complexity.
 
 \section{Evidence of Participation}
 \textbf{Fowler School of Engineering Seminar Series} \\
@@ -1335,7 +1575,36 @@ How does the max-flow min-cut theorem ensure that the graph-theoretic approach a
 On Monday I had the chance to attend Dr. Alireza Mehrnia’s seminar on Artificial Intelligence: A Martian Odyssey, where he explored the potential evolution of artificial life beyond Earth. Rather than focusing on the usual technical aspects of AI, Dr. Mehrnia invited us to approach the topic from a philosophical and speculative lens, what happens when machines not only think, but redefine existence itself? Set against the backdrop of Mars, the seminar used narrative elements from his book to imagine a future where AI and synthetic life aren’t just tools, but beings that inherit and reinterpret human legacy. He challenged the idea that intelligence has to be biological, instead presenting Robo Sapiens as the next step, not of human development, but of intelligent life overall. What stood out to me was his discussion on how isolation from Earth’s cultural and ethical norms could shape entirely new forms of consciousness. With machines evolving in unfamiliar environments, might they develop beliefs, values, or even emotions that are unrecognizable to us? It was both exciting and unsettling to consider that our creations might grow beyond our understanding.
 
 Question: If synthetic beings develop their own sense of morality, how do we determine whether it's "right" by human standards or if we even should?
+
+\textbf{Discord Questions Participation:}\\
+Homework 2: \\
+How does a DFA remember whether it has seen the substring 01 during string processing, and how do the different states represent the conditions required for acceptance?
+
+Homework 3: \\
+How does a nondeterministic finite automaton (NFA) process the string "00101" to accept it, and how doesit differ from a deterministic finite automaton (DFA) in terms of state transitions?
+
+Homework 4: \\
+What does the Kleene star operation represent in the context of regular expressions?
+
+Homework 5: \\
+How does the minimization of a DFA impact its computational efficiency, and are there cases where mini-mizing a DFA could be detrimental rather than beneficial?
+
+Homework 6 and 7: \\
+Why are Turing machines used instead of actual programming languages when discussing undecidabil-ity?
+What makes the diagonalization language Ld so important in proving that some languages are noteven recursively enumerable?
+
+Homework 8 and 9: \\
+Since the theory of intractibility is based on the unproven assumption that P does not equal NP, whatwould be the practical implications for fields like cryptography, optimization, or artifical intelligence if itwere eventually proven that P = NP?
+
+Homework 10 and 11: \\
+If Kruskal’s algorithm is in P and SAT is NP-complete, what does this say about the difference between easyand hard problems?
+
+Homework 12 and 13:\\
+How does the max-flow min-cut theorem ensure that the graph-theoretic approach always finds the truemaximum flow, and why is this often more efficient than solving via linear programming?
+
 \section{Conclusion}\label{conclusion}
+This report provided an opportunity to engage deeply with core principles of theoretical computer science through a variety of problem-solving tasks. Working through formal proofs, algorithm analysis, and logic-based exercises reinforced the importance of clarity, precision, and analytical thinking. While some challenges required close attention to technical detail, they also highlighted the broader relevance of these concepts across computer science. Overall, the process not only strengthened understanding of foundational material but also built confidence in applying theory to complex problems in a structured and meaningful way.
+
 
 \begin{thebibliography}{99}
 \bibitem[BLA]{bla} Author, \href{https://en.wikipedia.org/wiki/LaTeX}{Title}, Publisher, Year.
